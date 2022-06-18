@@ -36,7 +36,7 @@ public class MovementScript : MonoBehaviour
         {
             jumpforce = 1;
             jumpeffect.transform.position = new Vector3(transform.position.x, transform.position.y-0.25f, transform.position.z);
-            jumpeffect.GetComponent<ParticleSystem>().Play(); 
+            jumpeffect.GetComponent<ParticleSystem>().Play();
         }
         else
             jumpforce = 0;

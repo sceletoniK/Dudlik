@@ -39,7 +39,6 @@ public class StaticData : MonoBehaviour
         MainDudlik.SetActive(true);
 
         GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[0].Play();
-        
     }
 
     public static void CreatePlatforms()

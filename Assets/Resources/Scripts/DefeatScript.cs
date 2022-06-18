@@ -8,6 +8,7 @@ public class DefeatScript : MonoBehaviour
 {
 
     public GameObject Prikol;
+    public GameObject[] Effects = new GameObject[2];
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,12 +36,17 @@ public class DefeatScript : MonoBehaviour
             GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[2].Play();
 
             Prikol.SetActive(true);
+            foreach (GameObject p in Effects)
+                p.SetActive(true);
 
             yield return new WaitForSeconds(7);
         }
 
+        foreach (GameObject p in Effects)
+            p.SetActive(false);
         SceneManager.LoadScene("Menu");
         Prikol.SetActive(false);
+        
 
     }
 }

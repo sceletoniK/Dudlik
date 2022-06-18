@@ -19,7 +19,7 @@ public class PlatformBehaviour : MonoBehaviour
         StaticData.Platforms.Remove(gameObject);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player" && (Dudlik.velocity.y <= 0 || other.gameObject.GetComponent<MovementScript>().Down))
             Box.enabled = true;
