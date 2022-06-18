@@ -7,6 +7,7 @@ public class NecoScript : MonoBehaviour
 {
     public Sprite[] sprites;
     private SpriteRenderer SpriteRender;
+    public bool active = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class NecoScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpriteRender.sprite = sprites[(int)(Time.time * 10) % sprites.Length];
+        if(active)
+            SpriteRender.sprite = sprites[(int)(Time.time * 10) % sprites.Length];
     }
 }

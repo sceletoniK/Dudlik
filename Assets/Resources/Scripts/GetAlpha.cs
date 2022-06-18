@@ -5,7 +5,6 @@ using UnityEngine;
 public class GetAlpha : MonoBehaviour
 {
 
-    // Update is called once per frame
     void Update()
     {
         if (gameObject.GetComponent<CanvasGroup>().alpha < 1)

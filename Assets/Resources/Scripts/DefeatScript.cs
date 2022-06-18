@@ -18,7 +18,9 @@ public class DefeatScript : MonoBehaviour
             GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[0].Pause();
             GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[1].PlayDelayed(1);
 
-            
+            foreach(GameObject p in GameObject.FindGameObjectsWithTag("Neco"))
+                p.GetComponent<NecoScript>().active = false;
+
             StartCoroutine(Death());
         }
     }
