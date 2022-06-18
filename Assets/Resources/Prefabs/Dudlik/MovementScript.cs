@@ -15,6 +15,7 @@ public class MovementScript : MonoBehaviour
     public bool Down = false;
     private float sideforce;
     private float jumpforce;
+    public GameObject jumpeffect;
 
     void Start()
     {
@@ -30,9 +31,15 @@ public class MovementScript : MonoBehaviour
             sideforce = -1;
         else
             sideforce = 0;
-
-        if (onSurface)
+        
+        if (onSurface && jumpforce == 0)
+        {
             jumpforce = 1;
+            jumpeffect.transform.position = new Vector3(transform.position.x, transform.position.y-0.25f, transform.position.z);
+            jumpeffect.GetComponent<ParticleSystem>().Play();
+            Debug.Log("Jump!");
+            
+        }
         else
             jumpforce = 0;
         rb.AddForce(new Vector3(sideforce * HorForce, jumpforce * acceleration, 0) * Time.fixedDeltaTime, ForceMode.Impulse);
