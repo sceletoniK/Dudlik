@@ -11,15 +11,26 @@ public class DefeatScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if(!PlayerPrefs.HasKey("PlayerRecord") || PlayerPrefs.GetFloat("PlayerRecord") < StaticData.RecordHeight)
+            other.gameObject.SetActive(false);
+
+            GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[0].Pause();
+            GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[1].PlayDelayed(1);
+
+            if (!PlayerPrefs.HasKey("PlayerRecord") || PlayerPrefs.GetFloat("PlayerRecord") < StaticData.RecordHeight)
+            {
                 PlayerPrefs.SetFloat("PlayerRecord", StaticData.RecordHeight);
-            StartCoroutine(Death());
+                GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[2].PlayDelayed(1);
+
+                StartCoroutine(Death(9));
+            }
+            else
+                StartCoroutine(Death(2));
         }
     }
 
-    IEnumerator Death()
+    IEnumerator Death(int delay)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("Menu");
     }
 }

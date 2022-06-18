@@ -36,6 +36,9 @@ public class StaticData : MonoBehaviour
     private void Start()
     {
         RecordHeight = 0;
+        MainDudlik.SetActive(true);
+
+        GameObject.Find("NewRecordPrikol").GetComponent<CanvasGroup>().alpha = 0;
     }
 
     public static void CreatePlatforms()

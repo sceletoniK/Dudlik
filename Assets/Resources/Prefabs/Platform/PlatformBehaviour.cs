@@ -21,7 +21,7 @@ public class PlatformBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && Dudlik.velocity.y < 0)
+        if (other.gameObject.tag == "Player" && Dudlik.velocity.y <= 0)
             Box.enabled = true;
     }
         
