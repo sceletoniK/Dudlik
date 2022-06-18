@@ -423,6 +423,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1827596687956953767, guid: b68c1ac74db5190438ff505d8552f130, type: 3}
+      propertyPath: HorForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -1827596687956953767, guid: b68c1ac74db5190438ff505d8552f130, type: 3}
       propertyPath: jumpeffect
       value: 
       objectReference: {fileID: 863002696}
@@ -895,7 +899,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 52
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
