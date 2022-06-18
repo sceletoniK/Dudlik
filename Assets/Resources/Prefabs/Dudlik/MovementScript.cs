@@ -32,13 +32,11 @@ public class MovementScript : MonoBehaviour
         else
             sideforce = 0;
         
-        if (onSurface && jumpforce == 0)
+        if(onSurface && jumpforce == 0 && rb.velocity.y < 0.1 && !Down)
         {
             jumpforce = 1;
             jumpeffect.transform.position = new Vector3(transform.position.x, transform.position.y-0.25f, transform.position.z);
-            jumpeffect.GetComponent<ParticleSystem>().Play();
-            Debug.Log("Jump!");
-            
+            jumpeffect.GetComponent<ParticleSystem>().Play(); 
         }
         else
             jumpforce = 0;

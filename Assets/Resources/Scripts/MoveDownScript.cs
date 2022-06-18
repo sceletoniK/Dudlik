@@ -22,7 +22,7 @@ public class MoveDownScript : MonoBehaviour
                 }
                 dudlikRigidBody.useGravity = false;
                 dudlikRigidBody.velocity = new Vector3(dudlikRigidBody.velocity.x, 0, 0);
-                other.gameObject.GetComponent < MovementScript>().Down = true;
+                other.gameObject.GetComponent <MovementScript>().Down = true;
                 
             }
             else if (StaticData.Platforms[0].GetComponent<Rigidbody>().velocity.y > -0.35f)

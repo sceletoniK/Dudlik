@@ -38,7 +38,8 @@ public class StaticData : MonoBehaviour
         RecordHeight = 0;
         MainDudlik.SetActive(true);
 
-        GameObject.Find("NewRecordPrikol").GetComponent<CanvasGroup>().alpha = 0;
+        GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[0].Play();
+        PlayerPrefs.SetFloat("PlayerRecord", 0);
     }
 
     public static void CreatePlatforms()

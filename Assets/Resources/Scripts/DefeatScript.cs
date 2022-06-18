@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class DefeatScript : MonoBehaviour
 {
 
+    public GameObject Prikol;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -16,21 +18,27 @@ public class DefeatScript : MonoBehaviour
             GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[0].Pause();
             GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[1].PlayDelayed(1);
 
-            if (!PlayerPrefs.HasKey("PlayerRecord") || PlayerPrefs.GetFloat("PlayerRecord") < StaticData.RecordHeight)
-            {
-                PlayerPrefs.SetFloat("PlayerRecord", StaticData.RecordHeight);
-                GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[2].PlayDelayed(1);
-
-                StartCoroutine(Death(9));
-            }
-            else
-                StartCoroutine(Death(2));
+            
+            StartCoroutine(Death());
         }
     }
 
-    IEnumerator Death(int delay)
+    IEnumerator Death()
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(4);
+
+        if (!PlayerPrefs.HasKey("PlayerRecord") || PlayerPrefs.GetFloat("PlayerRecord") < StaticData.RecordHeight)
+        {
+            PlayerPrefs.SetFloat("PlayerRecord", StaticData.RecordHeight);
+            GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[2].Play();
+
+            Prikol.SetActive(true);
+
+            yield return new WaitForSeconds(7);
+        }
+
         SceneManager.LoadScene("Menu");
+        Prikol.SetActive(false);
+
     }
 }
