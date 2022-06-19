@@ -61,11 +61,16 @@ public class StaticData : MonoBehaviour
         {
             Platforms.Add(Instantiate(Platform, new Vector3(Random.Range(-5.3f, 5.3f), Random.Range(hight, hight + verticalRange), 0), Quaternion.identity));
 
+            if (Random.Range(0f, 1f) >= 0.75)
+            {
+                Platforms.Add(Instantiate(Platform, new Vector3(Random.Range(-5.3f, 5.3f), Random.Range(hight, hight + verticalRange + 0.2f), 0), Quaternion.identity));
+            }
+
             hight = Platforms.Max(x => x.tag == "Platform" ? x.GetComponent<Transform>().position.y : -1 );
 
             if(Random.Range(0f,1f) >= 0.85)
             {
-                Platforms.Add(Instantiate(FragilePlatform, new Vector3(Random.Range(-5.3f, 5.3f), Random.Range(hight, hight + verticalRange + 0.25f), 0), Quaternion.identity));
+                Platforms.Add(Instantiate(FragilePlatform, new Vector3(Random.Range(-5.2f, 5.2f), Random.Range(hight, hight + verticalRange + 0.25f), 0), Quaternion.identity));
             }
         }
     }

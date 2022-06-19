@@ -907,7 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e78165319487e6e4693692e72cdba9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VerticalRange: 2
+  VerticalRange: 1.7
   Necos:
   - {fileID: 2022600368}
   - {fileID: 2023930083}
