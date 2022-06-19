@@ -18,6 +18,8 @@ public class FragilePlatformBehaviour : MonoBehaviour
     void OnDestroy()
     {
         StaticData.Platforms.Remove(gameObject);
+
+        //Код на эффект
     }
 
     void OnTriggerStay(Collider other)
@@ -36,9 +38,7 @@ public class FragilePlatformBehaviour : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Fall = true;
-            GetComponent<Rigidbody>().isKinematic = false;
-            GetComponent<Rigidbody>().velocity += new Vector3(0, -20, 0);
+            Destroy(gameObject);
         }
     }
 

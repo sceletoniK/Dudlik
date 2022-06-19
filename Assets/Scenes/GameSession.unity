@@ -1861,6 +1861,18 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7734538791606236385, guid: c41f2e51a8b0ebf4c9ff561744047f7d, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734538791606236385, guid: c41f2e51a8b0ebf4c9ff561744047f7d, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734538791606236385, guid: c41f2e51a8b0ebf4c9ff561744047f7d, type: 3}
+      propertyPath: InitialModule.startSizeZ.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7734538791606236414, guid: c41f2e51a8b0ebf4c9ff561744047f7d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
