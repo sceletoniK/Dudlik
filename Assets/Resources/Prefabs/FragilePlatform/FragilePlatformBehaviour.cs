@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using static StaticData;
 
-public class PlatformBehaviour : MonoBehaviour
+public class FragilePlatformBehaviour : MonoBehaviour
 {
     private BoxCollider Box;
     private Rigidbody Dudlik;
+    public bool Fall = false;
 
     void Awake()
     {
@@ -27,7 +28,18 @@ public class PlatformBehaviour : MonoBehaviour
         
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !Fall)
             Box.enabled = false;
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            Fall = true;
+            GetComponent<Rigidbody>().isKinematic = false;
+            GetComponent<Rigidbody>().velocity += new Vector3(0, -20, 0);
+        }
+    }
+
 }

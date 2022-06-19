@@ -10,14 +10,19 @@ public class StaticData : MonoBehaviour
     public static GameObject MainDudlik;
     public static List<GameObject> Platforms;
     public static GameObject Platform;
+    public static GameObject FragilePlatform;
     static public float RecordHeight;
 
+    public GameObject[] Necos = new GameObject[2];
+    public AudioSource Music;
+
     private static float hight;
-    // Start is called before the first frame update
+    
     void Awake()
     {
         verticalRange = VerticalRange;
         Platform = (GameObject)Resources.Load("Prefabs/Platform/Platform", typeof(GameObject));
+        FragilePlatform = (GameObject)Resources.Load("Prefabs/FragilePlatform/FragilePlatform", typeof(GameObject));
 
         foreach (GameObject p in GameObject.FindGameObjectsWithTag("Triggers"))
         {
@@ -39,6 +44,13 @@ public class StaticData : MonoBehaviour
         MainDudlik.SetActive(true);
 
         GameObject.FindWithTag("MainCamera").GetComponents<AudioSource>()[0].Play();
+
+        if(PlayerPrefs.GetInt("Audio") == 0)
+        {
+            foreach (GameObject p in Necos)
+                p.SetActive(false);
+            Music.volume = 0;
+        }
     }
 
     public static void CreatePlatforms()
@@ -49,7 +61,12 @@ public class StaticData : MonoBehaviour
         {
             Platforms.Add(Instantiate(Platform, new Vector3(Random.Range(-5.3f, 5.3f), Random.Range(hight, hight + verticalRange), 0), Quaternion.identity));
 
-            hight = Platforms.Max(x => x.GetComponent<Transform>().position.y);
+            hight = Platforms.Max(x => x.tag == "Platform" ? x.GetComponent<Transform>().position.y : -1 );
+
+            if(Random.Range(0f,1f) >= 0.85)
+            {
+                Platforms.Add(Instantiate(FragilePlatform, new Vector3(Random.Range(-5.3f, 5.3f), Random.Range(hight, hight + verticalRange + 0.25f), 0), Quaternion.identity));
+            }
         }
     }
 

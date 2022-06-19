@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - Neco
   - Effects
+  - FragilePlatform
   layers:
   - Default
   - TransparentFX
